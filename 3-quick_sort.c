@@ -31,9 +31,9 @@ int partition (int A[], int low, int high)
         while (A[left] <= pivot_item)
             left++;
         while (A[left] >= pivot_item)
-            right++;
-            if (left < right)
-                swap(left, right);
+            right--;
+        if (left < right)
+            swap(left, right);
     }
     A[low] = A[right];
     A[right] = pivot_item;
