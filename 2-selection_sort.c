@@ -5,6 +5,8 @@
  * selection_sort - sorts an array  of integers using quick sort
  * @array: The array to be printed
  * @size: The array to be printed
+ *
+ * Return: void
  */
 void selection_sort(int *array, size_t size)
 {
