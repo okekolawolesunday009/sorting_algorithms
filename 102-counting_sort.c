@@ -42,7 +42,6 @@ void counting_sort(int *array, size_t size)
         count[array[i] - min]++;
     }
 
-    int index = 0;
     for (i = 0; i < range; i++) {
         while (count[i] > 0) {
             array[index] = i + min;

@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * bubble_sort - sorts an array of integers
+ * shell_sort - sorts an array of integers
  *
  * @array: The array to be printed
  * @size: Number of elements in @array
@@ -9,7 +9,9 @@
 void shell_sort(int *array, size_t size)
 {
     int i, j, h, v;
-    for (h = 1; h < size/9; h = 3 * h + 1);
+    if (array == NULL || size < 2)
+        return;
+    for (h = 1; h < size / 9; h = 3 * h + 1);
     for (;h >= 1; h = h / 3)
     {
         for (i = h; i < size; i += 1)
@@ -24,6 +26,8 @@ void shell_sort(int *array, size_t size)
             }
             array[j] = v;
             print_array(array, size);
+
+           
 
         }
     }
