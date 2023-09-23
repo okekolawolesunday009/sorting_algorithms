@@ -9,8 +9,8 @@
  */
 void swap(int *a, int *b) {
     int temp = *a;
-    *a = *b;
-    *b = temp;
+   *a = *b;
+   *b = temp;
 }
 
 /**
@@ -20,23 +20,23 @@ void swap(int *a, int *b) {
  * @high: The array to be printed
  * @a: Number of elements in @array
  */
-int partition (int A[], int low, int high)
+int partition (int array[], int low, int high)
 {
     int left, right, pivot_item;
-    pivot_item = A[low];
+    pivot_item = array[low];
     left = low;
     right = high;
     while (left > right)
     {
-        while (A[left] <= pivot_item)
+        while (array[left] <= pivot_item)
             left++;
-        while (A[left] >= pivot_item)
-            right--;
+        while (array[left] >= pivot_item)
+            right++;
         if (left < right)
-            swap(left, right);
+            swap(&array[left], &array[right]);
     }
-    A[low] = A[right];
-    A[right] = pivot_item;
+    array[low] = array[right];
+    array[right] = pivot_item;
     return (right);
 
 
