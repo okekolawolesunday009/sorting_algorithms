@@ -1,52 +1,43 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
  * insertion_sort_list - sorts a doubly linked list of integers
- *
- * @list: The list to be sorted
+ * in ascending order using Insertion sort algorithm
+ * @list: the list to be sorted/
  */
-
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *current, *sorted, *updated, *tmp;
+	listint_t *current, *prev, *next;
 
-    if (list == NULL || *list == NULL || (*list)->next == NULL)
-        return; 
-    sorted = NULL;
-    current = *list;
+	if (list == NULL || *list == NULL)
+		return;
 
-    while (current != NULL)
-    {
-        updated = current->next;
-        
-        if (sorted == NULL || current->n < sorted->n)
-        {
-            current->next = sorted;
-            current->prev = NULL;
-            if (sorted != NULL)
-                sorted->prev = current;
-            sorted = current;
-        }
-        else
-        {
-           tmp = sorted;
+	current = (*list)->next; /* start from 2nd element */
+	while (current)
+	{
+		next = current->next; /* strore next node */
 
-            while (tmp->next != NULL && tmp->next->n < current->n)
-            {
-                tmp = tmp->next;
-            }
-            
-            current->next = tmp->next;
-            if (tmp->next != NULL)
-                tmp->next->prev = current;
-            tmp->next = current;
-            current->prev = tmp;
-        }
+		/* check if current node is smaller than the previous node */
+		while (current->prev != NULL && current->n < current->prev->n)
+		{
+			prev = current->prev;
 
-        current = updated;
-        print_list(sorted);
-    }
+			/* swap the nodes */
+			prev->next = current->next;
+			if (current->next != NULL)
+				current->next->prev = prev;
 
-    *list = sorted;
+			current->next = prev;
+			current->prev = prev->prev;
+			prev->prev = current;
+
+			if (current->prev != NULL)
+				current->prev->next = current;
+			else
+				*list = current; /* update head od the */
+						 /*   list if needed */
+			print_list(*list); /* print the list after each swap */
+		}
+		current = next;
+	}
 }
