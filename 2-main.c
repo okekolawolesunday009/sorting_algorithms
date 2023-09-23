@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "sort.h"
-#include "2-selection_sort.c"
-#include "print_array.c"
-
 
 /**
  * main - Entry point
