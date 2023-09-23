@@ -10,10 +10,8 @@
 void counting_sort(int *array, size_t size)
 {
     size_t i, range;
-<<<<<<< HEAD
-=======
+
     int index = 0;
->>>>>>> c72bc3d626ecec2a8d9c951149f05d33fd987e39
     int max = array[0];
     int min = array[0];
     int *count;
@@ -44,10 +42,7 @@ void counting_sort(int *array, size_t size)
         count[array[i] - min]++;
     }
 
-<<<<<<< HEAD
     int index = 0;
-=======
->>>>>>> c72bc3d626ecec2a8d9c951149f05d33fd987e39
     for (i = 0; i < range; i++) {
         while (count[i] > 0) {
             array[index] = i + min;

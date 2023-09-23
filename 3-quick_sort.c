@@ -1,66 +1,47 @@
 #include "sort.h"
 #include <stdio.h>
 
-/**
- * partiton - sorts an array  of integers using quick sort
- * 
- * @a: The array to be printed
- * @b: The array to be printed
- */
 void swap(int *a, int *b) {
     int temp = *a;
-   *a = *b;
-   *b = temp;
+    *a = *b;
+    *b = temp;
 }
 
-/**
- * partiton - sorts an array  of integers using quick sort
-*
- * @low: The array to be printed
- * @high: The array to be printed
- * @a: Number of elements in @array
- */
-int partition (int array[], int low, int high)
-{
-    int left, right, pivot_item;
-    pivot_item = array[low];
-    left = low;
-    right = high;
-    while (left > right)
-    {
-        while (array[left] <= pivot_item)
+int partition(int array[], int low, int high) {
+    int pivot_item = array[low];
+    int left = low + 1;
+    int right = high;
+
+    while (left <= right) {
+        while (left <= right && array[left] <= pivot_item)
             left++;
-        while (array[left] >= pivot_item)
-            right++;
-        if (left < right)
+        while (array[right] >= pivot_item)
+            right--;
+        if (left <= right)
             swap(&array[left], &array[right]);
     }
-    array[low] = array[right];
-    array[right] = pivot_item;
-    return (right);
 
-
+    swap(&array[low], &array[right]);
+    return right;
 }
 
-/**
- * quick_sort - sorts an array  of integers using quick sort
-*
- * @array: The array to be printed
- * @size: Number of elements in @array
- */
 
-void quick_sort(int *array, size_t size)
-{
-    int low, high, pivot;
-    low = 0;
-    high = size - 1;
+void quick_sort(int *array, size_t size) {
     if (size <= 1)
         return;
 
-    if (low < high) {
-        pivot = partition(array, low, high);
-        quick_sort(array, pivot);
-        quick_sort(array + pivot + 1, size - pivot - 1);
-    }
+    int low = 0;
+    int high = size - 1;
+    int pivot;
 
+    while (low < high) {
+        pivot = partition(array, low, high);
+        if (pivot - low < high - pivot) {
+            quick_sort(array, pivot);
+            low = pivot + 1;
+        } else {
+            quick_sort(array + pivot + 1, high - pivot);
+            high = pivot - 1;
+        }
+    }
 }

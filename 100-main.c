@@ -1,6 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "sort.h"
+#include "100-shell_sort.c"
+#include "print_array.c"
+
+
 /**
  * main - Entry point
  *
@@ -13,7 +15,7 @@ int main(void)
 
     print_array(array, n);
     printf("\n");
-    selection_sort(array, n);
+    shell_sort(array, n);
     printf("\n");
     print_array(array, n);
     return (0);
