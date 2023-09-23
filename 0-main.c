@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "sort.h"
-#include "print_array.c"
-#include "print_list.c"
-#include "0-bubble_sort.c"
 
 /**
  * main - Entry point
